@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import { usePathname, useSearchParams,useRouter } from 'next/navigation';
 const LocationDetector = () => {
+    /* ...........................logic start......................................... */
+
     const [loading, setLoading] = useState(false);
     const searchParams = useSearchParams();
     const pathName = usePathname();
@@ -19,13 +21,14 @@ const LocationDetector = () => {
                 router.push(`/current?${params.toString()}`);
             })
         }
-    },[pathName,searchParams])
+    }, [pathName, searchParams])
+
+    /* ...........................logic end......................................... */
   return (
       <div className='flex flex-col justify-center items-center h-screen text-white bg-slate-700'>
           {
               loading && <>
-                  <Image src={'/network.jpg'} alt='network' height={500} width={500} className='border rounded-md my-4' />
-                  <p className='text-4xl text-center'>Detecting Location..</p>
+                  <p className='text-4xl text-center text-red-800'>Detecting Location..</p>
               </>
           }
     </div>
