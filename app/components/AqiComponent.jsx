@@ -3,11 +3,10 @@ import { getAQIData } from "@/lib/weather-info";
 import Image from "next/image";
 import Card from "./Card";
 const AqiComponent = async ({ lat, lon }) => {
-  const aqiData = await getAQIData(lat, lon);
-  if (!aqiData) {
-  return <Card>Could not fetch AQI data</Card>;
-  }
-  const { main, components } = aqiData;
+  const { main, components } = await getAQIData(lat, lon);
+  console.log(main, components);
+  
+ 
   return (
     <Card>
       <h6 className="feature-name">Air Pollution & Quality</h6>
@@ -39,7 +38,7 @@ const AqiComponent = async ({ lat, lon }) => {
             Carbon Monoxide
           </div>
           <span className="text-right text-sm text-white lg:text-base">
-            {components.co} µg/m³
+            {} µg/m³
           </span>
         </div>
 
@@ -55,7 +54,7 @@ const AqiComponent = async ({ lat, lon }) => {
             Nitric Oxide
           </div>
           <span className="text-right text-sm text-white lg:text-base">
-            {components.no} ppm
+            {} ppm
           </span>
         </div>
 
@@ -71,7 +70,7 @@ const AqiComponent = async ({ lat, lon }) => {
             Nitrogen Dioxide
           </div>
           <span className="text-right text-sm text-white lg:text-base">
-            {components.no2} ppm
+            {} ppm
           </span>
         </div>
 
@@ -87,7 +86,7 @@ const AqiComponent = async ({ lat, lon }) => {
             Ozone
           </div>
           <span className="text-right text-sm text-white lg:text-base">
-            {components.o3} µg/m³
+            {} µg/m³
           </span>
         </div>
 
@@ -103,7 +102,7 @@ const AqiComponent = async ({ lat, lon }) => {
             Sulfur Dioxide
           </div>
           <span className="text-right text-sm text-white lg:text-base">
-            {components.so2} ppm
+            {} ppm
           </span>
         </div>
 
@@ -119,7 +118,7 @@ const AqiComponent = async ({ lat, lon }) => {
             PM2.5
           </div>
           <span className="text-right text-sm text-white lg:text-base">
-            {components.pm2_5} µg/m³
+            {} µg/m³
           </span>
         </div>
       </div>
